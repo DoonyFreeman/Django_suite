@@ -19,8 +19,8 @@ from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), # админка
 
-    path('', include('homepage.urls')),
-    path('catalog/', include('catalog.urls')),
+    path('', include('homepage.urls')), # передача управления на homepage.urls
+    path('catalog/', include('catalog.urls')),  # передача управления на catalog.urls
 ]
