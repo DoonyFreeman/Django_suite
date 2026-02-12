@@ -1,4 +1,12 @@
  {% extends "base.html" %}
  {% block content %}
-   <h1>Это страница "ACME" со списком товаров!</h1>
+   <h1>{{ title }}</h1>
+   {% for product in products %}
+    <p>{{ product }}</p>
+    {% if forloop.last %}
+        <hr>
+    {% endif %}
+    {% empty %}
+        Товаров пока не завезли
+    {% endfor %}
  {% endblock %}
