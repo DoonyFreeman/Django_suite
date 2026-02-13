@@ -1,6 +1,9 @@
  {% extends "base.html" %}
  {% block content %}
    <h1>{{ title }}</h1>
+   <a href="{% url 'catalog:product_list' %}">
+    Страница со списком товаров
+   </a>
    {% for product in products %}
     <p>{{ product }}</p>
     {% if forloop.last %}
