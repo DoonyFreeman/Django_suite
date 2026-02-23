@@ -3,8 +3,14 @@ from django.db import models
 class ProductType(models.Model):
     title = models.CharField(max_length=128)
 
+    def __str__(self):
+        return self.title
+
 class OriginalTitle(models.Model):
     title = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.title
 
 class VideoProduct(models.Model):
     title = models.CharField(max_length=128)
@@ -19,6 +25,16 @@ class VideoProduct(models.Model):
         blank=True,
         help_text="Связь с оригинальным названием; допускается пустое значение"
     )
+
+    # удобный доступ к режиссёрам через промежуточную таблицу
+    directors = models.ManyToManyField(
+        'Director',
+        through='DirectorVideoProduct',
+        related_name='video_products',
+    )
+
+    def __str__(self):
+        return self.title
 
 
 class Director(models.Model):
