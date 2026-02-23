@@ -4,13 +4,12 @@ class VideoProduct(models.Model):
     title = models.CharField(max_length=128)
     # Описываем поле, ссылающееся на модель OriginalTitle:
     original_title = models.OneToOneField(
-        # На какую модель ссылаемся
-        'OriginalTitle',
-        # Поведение при удалении:
-        # если оригинальное имя будет удалено,
-        # то и сам фильм будет удалён. 
-        on_delete=models.CASCADE
-    ) 
+        OriginalTitle,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        help_text="Связь с оригинальным названием; допускается пустое значение"
+    )
     
 class OriginalTitle(models.Model):
     title = models.CharField(max_length=128)
